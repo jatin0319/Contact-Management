@@ -1,6 +1,6 @@
 FROM adoptopenjdk/openjdk8
 
-WORKDIR /Assignment
+WORKDIR /Contact-Management
 
 COPY .mvn/ .mvn
 
