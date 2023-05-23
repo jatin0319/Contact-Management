@@ -68,6 +68,8 @@ public class ContactServiceImpl implements ContactService {
     public List<ContactDetailsDto> getContactList(Integer pageNumber, Integer pageSize, String search, String sort,
                                                   String sortDir, String operation) {
 
+        this.validateQueryParameter(pageNumber, pageSize, search, sortDir);
+
         List<ContactDetailsDto> contactDetailsList = new ArrayList<>();
         Sort sortBy = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sort).ascending() : Sort.by(sort).descending() ;
 
@@ -84,6 +86,17 @@ public class ContactServiceImpl implements ContactService {
         });
 
         return contactDetailsList;
+    }
+
+    private void validateQueryParameter(Integer pageNumber, Integer pageSize, String search, String sortDir){
+        if (pageNumber <0 || pageNumber >999)
+            throw new RuntimeException("Invalid page number");
+
+        if (pageSize <0 || pageSize >999)
+            throw new RuntimeException("Invalid page size");
+
+        if (!sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) && !sortDir.equalsIgnoreCase(Sort.Direction.DESC.name()) )
+            throw new RuntimeException("Invalid sort direction");
     }
 
     @Override
