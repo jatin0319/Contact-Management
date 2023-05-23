@@ -43,7 +43,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null){
+        if (username != null){
             UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
             if(!jwtUtil.validateToken(token, userDetails)){
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED,"Invalid token");
