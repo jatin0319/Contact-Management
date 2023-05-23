@@ -3,12 +3,14 @@
 This project is for contact management.
 
 <h1>Tech Used</h1>
+
 * Spring boot and hibernate<br>
 * MySql <br>
 * Java 8 <br>
 * Docker <br>
 
 <h1> Functionalities of the Project </h1>
+
 * Implemented Jwt token generation, validation. <br>
 * Create contact "contact number should be unique". <br>
 * Get all contact details list and have search functionality on first name, last name and email. <br>
