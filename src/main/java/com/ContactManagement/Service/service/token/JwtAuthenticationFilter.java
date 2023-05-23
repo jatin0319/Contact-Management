@@ -31,25 +31,25 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         String authorization = request.getHeader("Authorization");
-        if (authorization == null || !authorization.startsWith("Bearer"))
-            throw new RuntimeException("Token not present");
+        if (authorization == null || !authorization.startsWith("Bearer")){
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED,"Token not present");
+            return;
+        }
 
         String token = authorization.split("Bearer ")[1];
-        String username = null;
+        String username;
         try {
             username = jwtUtil.extractUsername(token);
-        }catch (IllegalArgumentException illegalArgumentException){
-            throw new RuntimeException("Invalid Token");
-        }catch (ExpiredJwtException expiredJwtException){
-            throw new RuntimeException("Token has been expired");
-        }catch (MalformedJwtException malformedJwtException){
-            throw new RuntimeException("Malformed token");
+        }catch (Exception ex){
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED,"Invalid Token");
+            return;
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null){
             UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
             if(!jwtUtil.validateToken(token, userDetails)){
-                throw new RuntimeException("Invalid Token");
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED,"Invalid token");
+                return;
             }
         }
         filterChain.doFilter(request, response);
