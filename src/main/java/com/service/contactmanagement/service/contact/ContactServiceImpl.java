@@ -76,7 +76,7 @@ public class ContactServiceImpl implements ContactService {
 
         Pageable pagination = PageRequest.of(pageNumber, pageSize, sortBy);
         List<Contact> contactList =
-                contactRepository.findByFirstNameContainingOrLastNameContainingOrEmailContainingAndActiveStatus(search, search, search,ActiveStatus.active(), pagination);
+                contactRepository.findByActiveStatus(ActiveStatus.active(), search,pagination);
         contactList.forEach(contact -> {
             contactDetailsList.add(ContactDetailsDto.builder()
                             .firstName(contact.getFirstName())
