@@ -53,6 +53,6 @@ public class SwaggerConfig {
     }
 
     private ApiInfo getInfo() {
-        return new ApiInfo("Assignment", "This project is developed by Jatin Rawat","1.0","",new Contact("Jatin Rawat", "","jatinrwt19@gmail.com"),"License of Apis", "", Collections.emptyList());
+        return new ApiInfo("Contact Management", "This project is developed by Jatin Rawat","1.0","",new Contact("Jatin Rawat", "","jatinrwt19@gmail.com"),"License of Apis", "", Collections.emptyList());
     }
 }
