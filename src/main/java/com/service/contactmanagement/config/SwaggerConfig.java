@@ -2,7 +2,9 @@ package com.service.contactmanagement.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.*;
@@ -18,17 +20,18 @@ import java.util.List;
 @Configuration
 @EnableSwagger2
 @EnableWebMvc
+@Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfig {
 
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
     private ApiKey apiKey(){
-        return new ApiKey("Bearer", AUTHORIZATION_HEADER, "header");
+        return new ApiKey("JWT", AUTHORIZATION_HEADER, "header");
     }
 
     private List<SecurityReference> securityReferences(){
         AuthorizationScope scopes = new AuthorizationScope("global", "accessEverything");
-        return Arrays.asList(new SecurityReference("Bearer", new AuthorizationScope[]{scopes}));
+        return Arrays.asList(new SecurityReference("JWT", new AuthorizationScope[]{scopes}));
     }
 
     private List<SecurityContext> securityContexts(){
