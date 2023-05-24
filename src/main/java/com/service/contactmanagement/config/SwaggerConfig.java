@@ -43,6 +43,7 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .host("34.131.197.170")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.service.contactmanagement"))
                 .paths(PathSelectors.any())
@@ -53,6 +54,6 @@ public class SwaggerConfig {
     }
 
     private ApiInfo getInfo() {
-        return new ApiInfo("Contact Management", "This project is developed by Jatin Rawat","1.0","",new Contact("Jatin Rawat", "","jatinrwt19@gmail.com"),"License of Apis", "", Collections.emptyList());
+        return new ApiInfo("Contact Management", "This project is developed by Jatin Rawat","1.0","",new Contact("Jatin Rawat", "","jatinrwt19@gmail.com"),"Apache 2.0", "http://www.apache.org/licenses/LICENSE-2.0", Collections.emptyList());
     }
 }
