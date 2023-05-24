@@ -1,6 +1,8 @@
 # Contact-Management
 
 This project is for contact management.
+* Swagger url :- http://34.131.70.174/swagger-ui/index.html
+* Add Bearer before adding token.
 
 <h1>Tech Used</h1>
 
@@ -19,14 +21,14 @@ This project is for contact management.
 
 <h1> Routes </h1>
 
-* For JWT Token Generation (unsecured) : "http://localhost:9000/token" <br>
+* For JWT Token Generation (unsecured) : "http://34.131.70.174/token" <br>
   Request type : "POST" <br>
   Request body : {
   "password": "1234",
   "username": "jatin-rawat"
   }<br><br>
 
-* For create contact (secured) : "http://localhost:9000/contact/import"  <br>
+* For create contact (secured) : "http://34.131.70.174/contact/import"  <br>
   Request type : "POST" <br>
   Request body : {
   "firstName": "Mohit",
@@ -35,10 +37,10 @@ This project is for contact management.
   "email" : "jatin.rawat@gmail.com"
   }<br><br>
 
-* For Delete contact (secured) : "http://localhost:9000/contact/{mobileNumber}"  <br>
+* For Delete contact (secured) : "http://34.131.70.174/contact/{mobileNumber}"  <br>
   Request type : "DELETE" <br><br>
 
-* For Contact List (secured) : "http://localhost:9000/contact/list" <br>
+* For Contact List (secured) : "http://34.131.70.174/contact/list" <br>
   Request type : "GET" <br>
   Query parameters : pageNumber : not required<br>
                      pageSize : not required<br>
@@ -46,7 +48,7 @@ This project is for contact management.
                      sort : not required<br>
                      sortDir : not required<br><br>
 
-* For updating contact (secured) : "http://localhost:9000/contact/{mobileNumber}" <br>
+* For updating contact (secured) : "http://34.131.70.174/contact/{mobileNumber}" <br>
   Request type : "PUT" <br>
   Request body : {
   "firstName": "Mohit",
