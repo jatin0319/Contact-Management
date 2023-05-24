@@ -43,7 +43,7 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .host("http://34.131.197.170")
+                .host("34.131.197.170")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.service.contactmanagement"))
                 .paths(PathSelectors.any())
