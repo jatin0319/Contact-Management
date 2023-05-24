@@ -31,7 +31,7 @@ public class ContactController {
         this.contactService = contactService;
     }
 
-    @ApiOperation(value = "Api to Generate jwt token")
+    @ApiOperation(value = "Api to create contact")
     @RequestMapping(value = "/import", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CreateContactResponseDto> createContact(@Valid @RequestBody CreateContactRequestDto createContactRequestDto) {
         return new ResponseEntity<>(contactService.saveContact(createContactRequestDto, SAVE_CONTACT_DETAILS), HttpStatus.OK);
