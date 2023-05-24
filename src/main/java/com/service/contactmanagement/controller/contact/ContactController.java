@@ -7,6 +7,7 @@ import com.service.contactmanagement.dto.DeleteContactResponseDto;
 import com.service.contactmanagement.dto.UpdateContactRequestDto;
 import com.service.contactmanagement.dto.UpdateContactResponseDto;
 import com.service.contactmanagement.service.contact.ContactService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,11 +31,13 @@ public class ContactController {
         this.contactService = contactService;
     }
 
+    @ApiOperation(value = "Api to Generate jwt token")
     @RequestMapping(value = "/import", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<CreateContactResponseDto> createContact(@Valid @RequestBody CreateContactRequestDto createContactRequestDto) {
         return new ResponseEntity<>(contactService.saveContact(createContactRequestDto, SAVE_CONTACT_DETAILS), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Api to get list of contact details")
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<List<ContactDetailsDto>> getContactDetailsList(@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize,
                                                                          @RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
@@ -46,6 +49,7 @@ public class ContactController {
         return new ResponseEntity<>(contactList, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Api to update contact details")
     @RequestMapping(value = "/{mobileNumber}", method = RequestMethod.PATCH)
     public ResponseEntity<UpdateContactResponseDto> getContactDetailsList(@PathVariable(value = "mobileNumber") String mobileNumber,
                                                                           @Valid @RequestBody UpdateContactRequestDto updateContactRequest) {
@@ -54,6 +58,7 @@ public class ContactController {
         return new ResponseEntity<>(updateContactResponse, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Api to delete contact")
     @RequestMapping(value = "/{mobileNumber}", method = RequestMethod.DELETE)
     public ResponseEntity<DeleteContactResponseDto> deleteContact(@PathVariable(name = "mobileNumber") String mobileNumber) {
         return new ResponseEntity<>(contactService.deleteContact(mobileNumber, DELETE_CONTACT_DETAILS), HttpStatus.OK);
