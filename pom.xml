@@ -8,11 +8,11 @@
 		<version>2.7.13-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ContactManagement</groupId>
-	<artifactId>ContactService</artifactId>
+	<groupId>com.service</groupId>
+	<artifactId>contact-management</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ContactManagement</name>
-	<description>Contact Management service</description>
+	<name>contact-management</name>
+	<description>Project for Contact Management</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
