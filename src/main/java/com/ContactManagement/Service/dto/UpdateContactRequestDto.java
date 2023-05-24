@@ -15,17 +15,14 @@ import javax.validation.constraints.Pattern;
 @NoArgsConstructor
 public class UpdateContactRequestDto {
 
-    @NotNull(message = "First Name cannot be blank")
     @Pattern(regexp = "^[A-Za-z][A-Za-z0-9_]{3,40}", message = "Invalid first name")
     @JsonProperty("firstName")
     private String firstName;
 
-    @NotNull(message = "Last Name cannot be blank")
     @JsonProperty("lastName")
     @Pattern(regexp = "^[A-Za-z][A-Za-z0-9_]{3,40}", message = "Invalid last name")
     private String lastName;
 
-    @NotNull(message = "Phone Number cannot be blank")
     @Pattern(regexp = "^[6-9]\\d{9}$", message = "Invalid phone number")
     @JsonProperty("phoneNumber")
     private String phoneNumber;

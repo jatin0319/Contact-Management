@@ -14,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,10 +107,10 @@ public class ContactServiceImpl implements ContactService {
             throw new RuntimeException("Contact not found, Please try again");
 
         contact = contact.toBuilder()
-                .firstName(updateContactRequest.getFirstName())
-                .lastName(updateContactRequest.getLastName())
-                .email(updateContactRequest.getEmail())
-                .phoneNumber(updateContactRequest.getPhoneNumber())
+                .firstName(StringUtils.hasText(updateContactRequest.getFirstName()) ? updateContactRequest.getFirstName() : contact.getFirstName())
+                .lastName(StringUtils.hasText(updateContactRequest.getLastName()) ? updateContactRequest.getLastName() : contact.getLastName())
+                .email(StringUtils.hasText(updateContactRequest.getEmail()) ? updateContactRequest.getEmail() : contact.getEmail())
+                .phoneNumber(StringUtils.hasText(updateContactRequest.getPhoneNumber()) ? updateContactRequest.getPhoneNumber() : contact.getPhoneNumber())
                 .build();
         contactRepository.save(contact);
 

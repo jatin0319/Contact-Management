@@ -23,12 +23,12 @@ public class SwaggerConfig {
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
     private ApiKey apiKey(){
-        return new ApiKey("JWT", AUTHORIZATION_HEADER, "header");
+        return new ApiKey("Bearer", AUTHORIZATION_HEADER, "header");
     }
 
     private List<SecurityReference> securityReferences(){
         AuthorizationScope scopes = new AuthorizationScope("global", "accessEverything");
-        return Arrays.asList(new SecurityReference("JWT", new AuthorizationScope[]{scopes}));
+        return Arrays.asList(new SecurityReference("Bearer", new AuthorizationScope[]{scopes}));
     }
 
     private List<SecurityContext> securityContexts(){
@@ -41,7 +41,7 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.ContactManagement.Service.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(getInfo())

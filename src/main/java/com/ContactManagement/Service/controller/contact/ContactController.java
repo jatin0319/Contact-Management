@@ -46,7 +46,7 @@ public class ContactController {
         return new ResponseEntity<>(contactList, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{mobileNumber}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{mobileNumber}", method = RequestMethod.PATCH)
     public ResponseEntity<UpdateContactResponseDto> getContactDetailsList(@PathVariable(value = "mobileNumber") String mobileNumber,
                                                                           @Valid @RequestBody UpdateContactRequestDto updateContactRequest) {
         UpdateContactResponseDto updateContactResponse =

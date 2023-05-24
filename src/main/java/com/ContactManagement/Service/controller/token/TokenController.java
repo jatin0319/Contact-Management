@@ -4,6 +4,7 @@ import com.ContactManagement.Service.helper.JwtUtil;
 import com.ContactManagement.Service.dto.LoginRequestDto;
 import com.ContactManagement.Service.dto.LoginResponseDto;
 import com.ContactManagement.Service.service.token.CustomUserDetailsServiceImpl;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ public class TokenController {
         this.customUserDetailsService = customUserDetailsService;
     }
 
+    @ApiOperation(value = "Api to Generate jwt token")
     @RequestMapping(value = "/token", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<LoginResponseDto> generateToken(@Valid @RequestBody LoginRequestDto loginDto) {
         UserDetails userDetails= customUserDetailsService.loadUserByUsername(loginDto.getUsername());
