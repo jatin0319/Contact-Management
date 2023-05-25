@@ -2,6 +2,7 @@
 
 This project is for contact management.
 * Swagger url :- http://34.131.70.174/swagger-ui/index.html
+* For login UserName - "jatin-rawat" and password "1234"
 * Add Bearer before adding token.
 
 <h1>Tech Used</h1>
